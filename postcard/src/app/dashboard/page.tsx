@@ -39,6 +39,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { url } from "inspector";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function DashboardPage() {
   const links = [
@@ -214,7 +215,115 @@ const Dashboard = () => {
           <div className="col-span-3">
             <div className="h-[500rem]"></div>
           </div>
-          <div className="sticky h-40 top-0 bg-black">A</div>
+          <div className="sticky h-40 top-0 rounded-lg">
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  <p className="antialiased text-sm">
+                    STAMPS THAT YOU MIGHT LIKE
+                  </p>
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-5 items-center">
+                  <div>
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </div>
+                  <div className="col-span-4">
+                    <p>@StampSample</p>
+                    <p className="text-xs text font-semibold anitaliased text-slate-400">
+                      99.9k Mailers
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+              <CardContent>
+                <div className="grid grid-cols-5 items-center">
+                  <div>
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </div>
+                  <div className="col-span-4">
+                    <p>@StampSample</p>
+                    <p className="text-xs text font-semibold anitaliased text-slate-400">
+                      99.9k Mailers
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+              <CardContent>
+                <div className="grid grid-cols-5 items-center">
+                  <div>
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </div>
+                  <div className="col-span-4">
+                    <p>@StampSample</p>
+                    <p className="text-xs text font-semibold anitaliased text-slate-400">
+                      99.9k Mailers
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+              <CardContent>
+                <div className="grid grid-cols-5 items-center">
+                  <div>
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </div>
+                  <div className="col-span-4">
+                    <p>@StampSample</p>
+                    <p className="text-xs text font-semibold anitaliased text-slate-400">
+                      99.9k Mailers
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+              <CardContent>
+                <div className="grid grid-cols-5 items-center">
+                  <div>
+                    <Avatar>
+                      <AvatarImage
+                        src="https://github.com/shadcn.png"
+                        alt="@shadcn"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </div>
+                  <div className="col-span-4">
+                    <p>@StampSample</p>
+                    <p className="text-xs text font-semibold anitaliased text-slate-400">
+                      99.9k Mailers
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+              <CardFooter>
+                <p>Show more...</p>
+              </CardFooter>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
