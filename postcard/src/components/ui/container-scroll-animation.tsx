@@ -42,6 +42,7 @@ export const ContainerScroll = ({
       <div
         className="pt-10 md:pt-40 w-full relative"
         style={{
+          overflow: "hidden",
           perspective: "1000px",
         }}
       >
