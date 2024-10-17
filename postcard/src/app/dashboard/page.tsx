@@ -42,7 +42,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { url } from "inspector";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Toggle } from "@/components/ui/toggle";
 import {
@@ -52,187 +51,47 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import NoWalletConnected from "../components/NoWalletConnected";
+import SidebarComponent from "../components/SidebarComponent";
 
 export default function DashboardPage() {
   NoWalletConnected("..");
-  const links = [
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-      icon: (
-        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Profile",
-      href: "/profile",
-      icon: (
-        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Settings",
-      href: "#",
-      icon: (
-        <IconSettings className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Store",
-      href: "#",
-      icon: (
-        <IconBuildingStore className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-      ),
-    },
-  ];
-  const [open, setOpen] = useState(false);
   return (
-    <div
-      className={cn(
-        "rounded-md flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 max-w-screen mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
-        "h-screen"
-      )}
-    >
-      <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10">
-          <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            {open ? <Logo /> : <LogoIcon />}
-            <div className="mt-8 flex flex-col gap-2">
-              {links.map((link, idx) => (
-                <SidebarLink key={idx} link={link} />
-              ))}
-            </div>
-          </div>
-          <div>
-            <Drawer>
-              <DrawerTrigger>
-                <SidebarLink
-                  className="pointer-events-none"
-                  link={{
-                    label: "Logout",
-                    href: "#",
-                    icon: (
-                      <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />
-                    ),
-                  }}
-                />
-              </DrawerTrigger>
-              <DrawerContent style={{ height: "500px" }}>
-                <DrawerHeader>
-                  <DrawerTitle style={{ textAlign: "center" }}>
-                    Do you want to log out?
-                  </DrawerTitle>
-                  <DrawerDescription style={{ textAlign: "center" }}>
-                    <WalletMultiButton
-                      style={{
-                        color: "#84cc16",
-                        backgroundColor: "transparent",
-                        marginTop: "20px",
-                        border: "5px dashed",
-                      }}
-                    />
-                  </DrawerDescription>
-                </DrawerHeader>
-                <DrawerFooter>
-                  <DrawerClose>
-                    <Button variant="outline">Cancel</Button>
-                  </DrawerClose>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-          </div>
-          <div>
-            <SidebarLink
-              link={{
-                label: "Jerome Monte",
-                href: "#",
-                icon: (
-                  <img
-                    src="logo-postcard.png"
-                    className="h-7 w-7 flex-shrink-0 rounded-full"
-                    width={50}
-                    height={50}
-                    alt="Avatar"
-                  />
-                ),
-              }}
-            />
-          </div>
-        </SidebarBody>
-      </Sidebar>
-      <Dashboard />
-    </div>
-  );
-}
-export const Logo = () => {
-  return (
-    <Link
-      href=".."
-      className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
-    >
-      <img src="logo-postcard.png" className="w-6" />
-      <motion.span
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="font-medium text-lime-500 dark:text-white whitespace-pre"
-      >
-        Postcard
-      </motion.span>
-    </Link>
-  );
-};
-export const LogoIcon = () => {
-  return (
-    <Link
-      href=".."
-      className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
-    >
-      <img src="logo-postcard.png" className="w-6" />
-    </Link>
-  );
-};
-
-const Dashboard = () => {
-  return (
-    // Top cards
-    <div className="overflow-auto">
+    <SidebarComponent>
       <div className="flex flex-1">
-        <div className="p-2 md:p-10 bg-white dark:bg-neutral-900">
-          <div className="mx-20">
-            <Carousel className="w-full max-w-screen max-h-40">
-              <CarouselContent className="-ml-1">
-                {Array.from({ length: 6 }).map((_, index) => (
-                  <CarouselItem
-                    key={index}
-                    className="pl-1 md:basis-1/2 lg:basis-1/3"
-                  >
-                    <div className="p-1">
-                      <Card
-                        className="border-2 border-lime-500 bg-cover bg-center"
-                        style={{
-                          backgroundImage:
-                            'url("https://images.unsplash.com/photo-1662235821763-840b7df13345?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
-                        }}
-                      >
-                        <CardContent className="flex items-center justify-center p-6 "></CardContent>
-                        <CardFooter className="rounded-lg bg-white/80">
-                          <CardTitle>Topic#&nbsp;{index + 1}</CardTitle>
-                          <CardDescription className="text-black font-semibold antialias">
-                            {" "}
-                            &nbsp;|&nbsp;@Stamp{index + 1}
-                          </CardDescription>
-                        </CardFooter>
-                      </Card>
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="mx-10" />
-              <CarouselNext className="mx-10" />
-            </Carousel>
-          </div>
+        <div className="px-2 bg-white dark:bg-neutral-900">
+          <Carousel className="w-full max-w-screen max-h-40">
+            <CarouselContent className="-ml-1">
+              {Array.from({ length: 6 }).map((_, index) => (
+                <CarouselItem
+                  key={index}
+                  className="pl-1 md:basis-1/2 lg:basis-1/3"
+                >
+                  <div className="p-1">
+                    <Card
+                      className="border-2 border-zinc-200 bg-cover bg-center"
+                      style={{
+                        backgroundImage:
+                          'url("https://images.unsplash.com/photo-1662235821763-840b7df13345?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")',
+                      }}
+                    >
+                      <CardContent className="flex items-center justify-center p-6 "></CardContent>
+                      <CardFooter className="rounded-lg bg-white/80">
+                        <CardTitle>Topic#&nbsp;{index + 1}</CardTitle>
+                        <CardDescription className="text-black font-semibold antialias">
+                          {" "}
+                          &nbsp;|&nbsp;@Stamp{index + 1}
+                        </CardDescription>
+                      </CardFooter>
+                    </Card>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="mx-10" />
+            <CarouselNext className="mx-10" />
+          </Carousel>
 
-          <div className="grid grid-cols-4 gap-8 mx-20 mt-5">
+          <div className="grid grid-cols-4 gap-8 mt-5">
             <div className="col-span-3 ">
               {/* post with image */}
               <Card className="mb-10">
@@ -566,6 +425,6 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </div>
+    </SidebarComponent>
   );
-};
+}
