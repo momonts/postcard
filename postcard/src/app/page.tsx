@@ -2,8 +2,12 @@
 import Footer from "@/components/footer";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { TypewriterEffect } from "@/components/ui/typewriter-effect";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import RedirectWalletConnect from "./components/RedirectWalletConnect";
+import {
+  DynamicConnectButton,
+  DynamicEmbeddedWidget,
+  DynamicWidget,
+} from "@dynamic-labs/sdk-react-core";
 
 export default function Home() {
   RedirectWalletConnect("/dashboard");
@@ -50,17 +54,9 @@ export default function Home() {
               />
             </center>
             <TypewriterEffect words={words} />
-            <center>
-              <WalletMultiButton
-                className="overflow-hidden"
-                style={{
-                  color: "#84cc16",
-                  backgroundColor: "transparent",
-                  margin: "35px",
-                  border: "5px dashed",
-                }}
-              />
-            </center>
+            <div className="grid justify-items-center pt-5">
+              <DynamicWidget />
+            </div>
           </div>
 
           <div className="overflow-hidden max-h-96 -mt-56">

@@ -13,9 +13,9 @@ import {
   IconSignature,
   IconTableColumn,
 } from "@tabler/icons-react";
+import { Router } from "next/router";
 
 export default function App() {
-  NoWalletConnected("../../");
   return (
     <SidebarComponent>
       <div className="grid grid-rows-3 w-full h-80 bg-lime-500 rounded-t-[50px] overflow-clip">
@@ -95,8 +95,8 @@ const Skeleton = () => (
 );
 const items = [
   {
-    title: "The Dawn of Innovation",
-    description: "Explore the birth of groundbreaking ideas and inventions.",
+    title: "My Stamps",
+    description: "Collection of your stamps",
     header: <Skeleton />,
     className: "md:col-span-2 outline outline-1 outline-lime-400 ",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
